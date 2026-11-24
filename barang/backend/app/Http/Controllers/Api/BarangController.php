@@ -7,7 +7,6 @@ use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
-use OpenApi\Annotations as OA;
 
 class BarangController extends Controller
 {
