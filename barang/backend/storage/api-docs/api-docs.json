@@ -1,0 +1,419 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Cafe POS API",
+        "description": "REST API untuk aplikasi Cafe POS SaaS Multi Tenant",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/user": {
+            "get": {
+                "summary": "Get the authenticated user",
+                "operationId": "getAuthenticatedUser",
+                "responses": {
+                    "200": {
+                        "description": "Authenticated user"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "servers": [
+                    {
+                        "url": "http://127.0.0.1:8000",
+                        "description": "Local Development Server"
+                    }
+                ]
+            }
+        },
+        "/api/barangs": {
+            "get": {
+                "tags": [
+                    "Barang"
+                ],
+                "summary": "List barang",
+                "operationId": "listBarangs",
+                "responses": {
+                    "200": {
+                        "description": "Paginated barang list"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "http://127.0.0.1:8000",
+                        "description": "Local Development Server"
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Barang"
+                ],
+                "summary": "Create a barang",
+                "operationId": "createBarang",
+                "responses": {
+                    "201": {
+                        "description": "Barang created"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "http://127.0.0.1:8000",
+                        "description": "Local Development Server"
+                    }
+                ]
+            }
+        },
+        "/api/barangs/{id}": {
+            "get": {
+                "tags": [
+                    "Barang"
+                ],
+                "summary": "Get a barang",
+                "operationId": "getBarang",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Barang details"
+                    },
+                    "404": {
+                        "description": "Barang not found"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "http://127.0.0.1:8000",
+                        "description": "Local Development Server"
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Barang"
+                ],
+                "summary": "Update a barang",
+                "operationId": "updateBarang",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Barang updated"
+                    },
+                    "404": {
+                        "description": "Barang not found"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "http://127.0.0.1:8000",
+                        "description": "Local Development Server"
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Barang"
+                ],
+                "summary": "Delete a barang",
+                "operationId": "deleteBarang",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Barang deleted"
+                    },
+                    "404": {
+                        "description": "Barang not found"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "http://127.0.0.1:8000",
+                        "description": "Local Development Server"
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Barang"
+                ],
+                "summary": "Update a barang",
+                "operationId": "patchBarang",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Barang updated"
+                    },
+                    "404": {
+                        "description": "Barang not found"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "http://127.0.0.1:8000",
+                        "description": "Local Development Server"
+                    }
+                ]
+            }
+        },
+        "/api/kategoris": {
+            "get": {
+                "tags": [
+                    "Kategori"
+                ],
+                "summary": "List kategori",
+                "operationId": "listKategoris",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Cari berdasarkan nama kategori",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Nomor halaman",
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Paginated kategori list"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "http://127.0.0.1:8000",
+                        "description": "Local Development Server"
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Kategori"
+                ],
+                "summary": "Create a kategori",
+                "operationId": "createKategori",
+                "responses": {
+                    "201": {
+                        "description": "Kategori created"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "http://127.0.0.1:8000",
+                        "description": "Local Development Server"
+                    }
+                ]
+            }
+        },
+        "/api/kategoris/{id}": {
+            "get": {
+                "tags": [
+                    "Kategori"
+                ],
+                "summary": "Get a kategori",
+                "operationId": "getKategori",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Kategori details"
+                    },
+                    "404": {
+                        "description": "Kategori not found"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "http://127.0.0.1:8000",
+                        "description": "Local Development Server"
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Kategori"
+                ],
+                "summary": "Update a kategori",
+                "operationId": "updateKategori",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Kategori updated"
+                    },
+                    "404": {
+                        "description": "Kategori not found"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "http://127.0.0.1:8000",
+                        "description": "Local Development Server"
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Kategori"
+                ],
+                "summary": "Delete a kategori",
+                "operationId": "deleteKategori",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Kategori deleted"
+                    },
+                    "404": {
+                        "description": "Kategori not found"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "http://127.0.0.1:8000",
+                        "description": "Local Development Server"
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Kategori"
+                ],
+                "summary": "Update a kategori",
+                "operationId": "patchKategori",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Kategori updated"
+                    },
+                    "404": {
+                        "description": "Kategori not found"
+                    },
+                    "422": {
+                        "description": "Validation failed"
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "http://127.0.0.1:8000",
+                        "description": "Local Development Server"
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Barang",
+            "description": "Manajemen barang"
+        },
+        {
+            "name": "Kategori",
+            "description": "Manajemen kategori barang"
+        }
+    ]
+}
