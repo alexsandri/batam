@@ -7,13 +7,14 @@ use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use OpenApi\Annotations as OA;
 
 class BarangController extends Controller
 {
     // Menampilkan semua barang
     public function index(Request $request)
     {
-        $query = Barang::query();
+        $query = Barang::with('kategori');
 
         if ($request->search) {
             $query->where(function ($q) use ($request) {
@@ -46,7 +47,7 @@ class BarangController extends Controller
         $validated = $request->validate([
             'kode_barang' => 'required|string|max:50|unique:barangs,kode_barang',
             'nama_barang' => 'required|string|max:150',
-            'kategori' => 'nullable|string|max:100',
+            'kategori_id' => 'required|exists:kategoris,id',
             'deskripsi' => 'nullable|string',
             'harga_beli' => 'required|numeric|min:0',
             'harga_jual' => 'required|numeric|min:0',
@@ -61,7 +62,7 @@ class BarangController extends Controller
                 ->store('barangs', 'public');
         }
 
-        $barang = Barang::create($validated);
+        $barang = Barang::create($validated)->load('kategori');
 
         return response()->json([
             'message' => 'Barang berhasil ditambahkan',
@@ -72,7 +73,7 @@ class BarangController extends Controller
     // Menampilkan detail barang
     public function show($id)
     {
-        $barang = Barang::findOrFail($id);
+        $barang = Barang::with('kategori')->findOrFail($id);
 
         return response()->json([
             'data' => $this->formatBarang($barang)
@@ -93,7 +94,7 @@ class BarangController extends Controller
                     ->ignore($barang->id)
             ],
             'nama_barang' => 'required|string|max:150',
-            'kategori' => 'nullable|string|max:100',
+            'kategori_id' => 'required|exists:kategoris,id',
             'deskripsi' => 'nullable|string',
             'harga_beli' => 'required|numeric|min:0',
             'harga_jual' => 'required|numeric|min:0',
@@ -119,7 +120,7 @@ class BarangController extends Controller
 
         return response()->json([
             'message' => 'Barang berhasil diperbarui',
-            'data' => $this->formatBarang($barang->fresh())
+            'data' => $this->formatBarang($barang->fresh('kategori'))
         ]);
     }
 
@@ -146,7 +147,8 @@ class BarangController extends Controller
             'id' => $barang->id,
             'kode_barang' => $barang->kode_barang,
             'nama_barang' => $barang->nama_barang,
-            'kategori' => $barang->kategori,
+            'kategori_id' => $barang->kategori_id,
+            'kategori' => $barang->kategori?->name,
             'deskripsi' => $barang->deskripsi,
             'harga_beli' => $barang->harga_beli,
             'harga_jual' => $barang->harga_jual,
