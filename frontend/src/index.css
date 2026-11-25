@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+body {
+  @apply bg-gray-100 text-gray-800 antialiased;
+}
+
+/* Gaya dasar input agar seragam di seluruh form */
+@layer components {
+  .input {
+    @apply block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm
+      placeholder:text-gray-400 transition
+      focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-gray-700;
+  }
+}
