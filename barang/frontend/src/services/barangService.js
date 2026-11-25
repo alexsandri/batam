@@ -1,11 +1,4 @@
-import axios from 'axios';
-
-const api = axios.create({
-    baseURL: '/api',
-    headers: {
-        Accept: 'application/json'
-    }
-});
+import api from './api';
 
 const barangService = {
 

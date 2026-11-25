@@ -10,3 +10,4 @@ class Kategori extends Model
         'name'
     ];
 }
+

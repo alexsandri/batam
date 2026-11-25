@@ -38,11 +38,38 @@
                 ],
                 "summary": "List barang",
                 "operationId": "listBarangs",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Cari berdasarkan nama atau kode barang",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Nomor halaman",
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Paginated barang list"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "servers": [
                     {
                         "url": "http://127.0.0.1:8000",

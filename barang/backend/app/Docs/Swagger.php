@@ -36,7 +36,25 @@ use OpenApi\Attributes as OA;
     operationId: 'listBarangs',
     tags: ['Barang'],
     summary: 'List barang',
-    responses: [new OA\Response(response: 200, description: 'Paginated barang list')]
+    security: [['bearerAuth' => []]],
+    parameters: [
+        new OA\Parameter(
+            name: 'search',
+            in: 'query',
+            description: 'Cari berdasarkan nama atau kode barang',
+            schema: new OA\Schema(type: 'string')
+        ),
+        new OA\Parameter(
+            name: 'page',
+            in: 'query',
+            description: 'Nomor halaman',
+            schema: new OA\Schema(type: 'integer', minimum: 1)
+        ),
+    ],
+    responses: [
+        new OA\Response(response: 200, description: 'Paginated barang list'),
+        new OA\Response(response: 401, description: 'Unauthenticated'),
+    ]
 )]
 #[OA\Post(
     path: '/api/barangs',
@@ -171,6 +189,4 @@ use OpenApi\Attributes as OA;
         new OA\Response(response: 404, description: 'Kategori not found'),
     ]
 )]
-class Swagger
-{
-}
+class Swagger {}
