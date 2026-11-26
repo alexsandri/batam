@@ -176,6 +176,6 @@ DOKUMENTASI.md                Dokumen teknis aplikasi
 ## Dokumentasi
 
 1. [DOKUMENTASI.md](DOKUMENTASI.md) memuat skema basis data, daftar *endpoint* API, aturan bisnis, dan skenario uji manual.
-2. [presentasi/Aplikasi_Barang.pdf](presentasi/Aplikasi_Barang.pdf) memuat tahapan pembuatan aplikasi, mulai dari modul CRUD data barang hingga aplikasi POS.
+2. [presentasi/Aplikasi%20POS%20Inventaris%20dan%20Penjualan%20untuk%20Kafe%20dan%20Restoran.pdf](presentasi/Aplikasi%20POS%20Inventaris%20dan%20Penjualan%20untuk%20Kafe%20dan%20Restoran.pdf) memuat tahapan pembuatan aplikasi, mulai dari modul CRUD data barang hingga aplikasi POS.
 
 Gambar contoh barang pada tangkapan layar bersumber dari Wikimedia Commons dengan lisensi bebas. Daftar pembuat dan lisensi setiap gambar tercantum pada [DOKUMENTASI.md bagian 9](DOKUMENTASI.md#9-sumber-gambar-contoh-barang).
