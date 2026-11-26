@@ -100,6 +100,8 @@ npm run dev                  # http://localhost:5173
 
 Setelah login sebagai admin, buat akun kasir lewat menu Pengguna.
 
+Data contoh (11 barang bergambar, pemasok, pembelian, penjualan, dan dua akun kasir) dapat diisi dengan `php artisan db:seed --class=DemoSeeder`. Password akun kasir diambil dari `DEMO_PASSWORD` atau dibuat acak. Untuk mencoba aplikasi tanpa instalasi lokal, gunakan GitHub Codespaces (lihat `.devcontainer/README.md`).
+
 ## 7. Pengujian
 
 Pengujian otomatis memakai PHPUnit dengan database SQLite in-memory (`phpunit.xml`), sehingga tidak menyentuh database MySQL.
@@ -115,9 +117,10 @@ php artisan test --compact
 | `tests/Feature/ManajemenDataTest.php` | Hak akses kasir, pengguna, kategori, pemasok, stok awal, proteksi hapus | 7 |
 | `tests/Feature/TransaksiTest.php` | Pembelian, penjualan, harga dari server, stok tidak cukup, bayar kurang, nomor faktur, kasir hanya melihat transaksinya, penyesuaian stok | 8 |
 | `tests/Feature/LaporanTest.php` | Total laporan penjualan per periode, validasi periode, nilai dan status persediaan | 3 |
+| `tests/Feature/DemoSeederTest.php` | Data demo lengkap, stok konsisten dengan kartu stok, seeder tidak menggandakan data | 2 |
 | `tests/Feature/ExampleTest.php`, `tests/Unit/*` | Bawaan Laravel | 2 |
 
-Hasil terakhir: 24 tes, 101 asersi, semua lulus.
+Hasil terakhir: 26 tes, 119 asersi, semua lulus.
 
 ### Skenario uji manual (frontend)
 

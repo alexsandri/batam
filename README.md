@@ -10,10 +10,11 @@ Aplikasi Manajemen Inventaris dan Penjualan Barang merupakan aplikasi *point of 
 2. [Tampilan Aplikasi](#tampilan-aplikasi)
 3. [Teknologi yang Digunakan](#teknologi-yang-digunakan)
 4. [Instalasi](#instalasi)
-5. [Hak Akses Pengguna](#hak-akses-pengguna)
-6. [Pengujian](#pengujian)
-7. [Struktur Proyek](#struktur-proyek)
-8. [Dokumentasi](#dokumentasi)
+5. [Mencoba Aplikasi melalui GitHub Codespaces](#mencoba-aplikasi-melalui-github-codespaces)
+6. [Hak Akses Pengguna](#hak-akses-pengguna)
+7. [Pengujian](#pengujian)
+8. [Struktur Proyek](#struktur-proyek)
+9. [Dokumentasi](#dokumentasi)
 
 ## Fitur Aplikasi
 
@@ -119,6 +120,19 @@ npm run dev
 ```
 
 Aplikasi dapat diakses melalui `http://localhost:5173`. Setelah masuk sebagai admin, buat akun kasir melalui menu **Pengguna**. Permintaan ke `/api` dan `/storage` diteruskan ke *backend* melalui *proxy* Vite.
+
+## Mencoba Aplikasi melalui GitHub Codespaces
+
+Aplikasi dapat dicoba langsung di peramban tanpa instalasi lokal melalui GitHub Codespaces.
+
+[![Buka di GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dripadd/BNSP?quickstart=1)
+
+1. Klik tombol di atas, atau pilih **Code**, kemudian **Codespaces**, lalu **Create codespace on main**.
+2. Tunggu proses penyiapan otomatis selama sekitar tiga sampai lima menit.
+3. Buka port **5173 (Aplikasi POS)** pada tab **Ports**.
+4. Masuk dengan akun demo yang tercantum pada berkas `backend/storage/app/demo-akun.txt`.
+
+Codespace bersifat sementara dan berhenti secara otomatis apabila tidak digunakan. Petunjuk lengkap tersedia pada [.devcontainer/README.md](.devcontainer/README.md).
 
 ## Hak Akses Pengguna
 
