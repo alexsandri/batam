@@ -1,4 +1,4 @@
-# Aplikasi Manajemen Inventaris dan Penjualan Barang
+# Aplikasi POS Inventaris dan Penjualan untuk Kafe dan Restoran
 
 Aplikasi Manajemen Inventaris dan Penjualan Barang merupakan aplikasi *point of sales* (POS) sederhana yang ditujukan bagi usaha kafe dan restoran. Aplikasi ini dikembangkan dari modul praktikum pembuatan CRUD data barang dengan menggunakan Laravel 13 sebagai *backend* (REST API), React sebagai *frontend*, dan Tailwind CSS 4 sebagai kerangka kerja antarmuka.
 
